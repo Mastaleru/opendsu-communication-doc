@@ -5,9 +5,10 @@
  * Publish a new version of the anchor
  *
  * body Body  (optional)
+ * keySSI String keySSI base58
  * no response value expected for this operation
  **/
-exports.addAnchor = function(body) {
+exports.addAnchor = function(body,keySSI) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -17,7 +18,7 @@ exports.addAnchor = function(body) {
 /**
  * Creates a subscription in order to be notified after a new version of an anchor is available
  *
- * anchorId String 
+ * keySSI String 
  * fromVersion String  (optional)
  * authToken String  (optional)
  * subscriberID String  (optional)
@@ -25,7 +26,7 @@ exports.addAnchor = function(body) {
  * waitForNonExisting String  (optional)
  * no response value expected for this operation
  **/
-exports.createAnchorSubscription = function(anchorId,fromVersion,authToken,subscriberID,timeout,waitForNonExisting) {
+exports.createAnchorSubscription = function(keySSI,fromVersion,authToken,subscriberID,timeout,waitForNonExisting) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -35,11 +36,11 @@ exports.createAnchorSubscription = function(anchorId,fromVersion,authToken,subsc
 /**
  * Deletes the subscription
  *
- * anchorId String 
+ * keySSI String 
  * subscriberId String 
  * no response value expected for this operation
  **/
-exports.deleteAnchorSubscription = function(anchorId,subscriberId) {
+exports.deleteAnchorSubscription = function(keySSI,subscriberId) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -49,11 +50,11 @@ exports.deleteAnchorSubscription = function(anchorId,subscriberId) {
 /**
  * Retrive all the versions of an anchor
  *
- * anchorId String 
+ * keySSI String keySSI base58
  * authToken String empty, JWT, oauth, etc.
  * no response value expected for this operation
  **/
-exports.getVersions = function(anchorId,authToken) {
+exports.getVersions = function(keySSI,authToken) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
