@@ -8,8 +8,8 @@ info:
     url: https://opensource.org/licenses/MIT
   version: 1.0.0
 servers:
-- url: https://localhost:8080/
-- url: http://localhost:8080/
+- url: https://localhost:8080
+- url: http://localhost:8080
 tags:
 - name: KeySSI Notifications
   description: Pub/Sub notification system that uses AnchorId as channel name.
@@ -274,12 +274,21 @@ paths:
           description: Channel not found.
           content: {}
       x-swagger-router-controller: KeySSIMessageQueue
-  /anchor/add:
+  /anchor/add/{keySSI}:
     put:
       tags:
       - Anchoring Service
       summary: Publish a new version of the anchor
       operationId: addAnchor
+      parameters:
+      - name: keySSI
+        in: path
+        description: keySSI base58
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -291,7 +300,7 @@ paths:
         "400":
           description: Invalid AnchorId
       x-swagger-router-controller: AnchoringService
-  /anchor/subscribe/{anchorId}:
+  /anchor/subscribe/{keySSI}:
     get:
       tags:
       - Anchoring Service
@@ -299,7 +308,7 @@ paths:
         of an anchor is available
       operationId: createAnchorSubscription
       parameters:
-      - name: anchorId
+      - name: keySSI
         in: path
         required: true
         style: simple
@@ -348,14 +357,14 @@ paths:
         "400":
           description: Invalid AnchorId
       x-swagger-router-controller: AnchoringService
-  /anchor/unsubscribe/{anchorId}:
+  /anchor/unsubscribe/{keySSI}:
     delete:
       tags:
       - Anchoring Service
       summary: Deletes the subscription
       operationId: deleteAnchorSubscription
       parameters:
-      - name: anchorId
+      - name: keySSI
         in: path
         required: true
         style: simple
@@ -376,15 +385,16 @@ paths:
         "400":
           description: Invalid AnchorId
       x-swagger-router-controller: AnchoringService
-  /anchor/versions/{anchorId}:
+  /anchor/versions/{keySSI}:
     get:
       tags:
       - Anchoring Service
       summary: Retrive all the versions of an anchor
       operationId: getVersions
       parameters:
-      - name: anchorId
+      - name: keySSI
         in: path
+        description: keySSI base58
         required: true
         style: simple
         explode: false
@@ -400,7 +410,7 @@ paths:
           type: string
       responses:
         "200":
-          description: Returns the list of the versions of an AnchorId
+          description: Returns the list of the versions of a keySSI
         "400":
           description: Invalid AnchorId
       x-swagger-router-controller: AnchoringService
@@ -645,15 +655,12 @@ components:
     body:
       type: object
       properties:
-        anchorId:
-          type: string
-          description: KeySSI (zero access)
+        hash:
+          $ref: '#/components/schemas/body_hash'
         authToken:
           type: string
           description: empty, JWT, oauth, etc.
-        hashLink:
-          type: string
-        controlProof:
+        digitalProof:
           type: string
         ZKPValue:
           type: string
@@ -706,3 +713,10 @@ components:
       example:
         ssi: ssi:type:dldomain:specificstring:control:vn:hint
         signature: Signature of an existing Admin
+    body_hash:
+      type: object
+      properties:
+        new:
+          type: string
+        last:
+          type: string
