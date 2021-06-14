@@ -44,6 +44,8 @@ paths:
                 example: 340e887f5946a33e436a86511e573d20
         "500":
           description: Instantiating the transaction encountered an error
+    x-swagger-router-controller: DsuWizardService
+
 
   /dsu-wizard/{domain}/build/{transactionId}:
     post:
@@ -85,6 +87,7 @@ paths:
               schema:
                 type: string
                 example: Unable to ...
+    x-swagger-router-controller: DsuWizardService
 
   /dsu-wizard/{domain}/addFile/{transactionId}:
     post:
@@ -127,6 +130,8 @@ paths:
           description: The command was added to the transanction successfully
         "500":
           description: Error adding the command to the transaction
+    x-swagger-router-controller: DsuWizardService
+
 
   /dsu-wizard/{domain}/copy/{transactionId}:
     post:
@@ -173,6 +178,8 @@ paths:
           description: The command was added to the transanction successfully
         "500":
           description: Error adding the command to the transaction
+    x-swagger-router-controller: DsuWizardService
+
 
   /dsu-wizard/{domain}/mount/{transactionId}:
     post:
@@ -219,6 +226,9 @@ paths:
           description: The command was added to the transanction successfully
         "500":
           description: Error adding the command to the transaction
+    x-swagger-router-controller: DsuWizardService
+
+
 
   /dsu-wizard/{domain}/setKeySSI/{transactionId}:
     post:
@@ -264,7 +274,7 @@ paths:
           description: The command was added to the transanction successfully
         "500":
           description: Error adding the command to the transaction
-
+    x-swagger-router-controller: DsuWizardService
 
 
 components:
