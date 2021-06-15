@@ -1,0 +1,35 @@
+openapi: 3.0.1
+info:
+  title: OpenDSU communication APIs
+  description: This a project to model OpenDSU communication systems using OpenAPI
+    standard
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+servers:
+  - url: https://localhost:8080
+  - url: http://localhost:8080
+tags:
+
+  - name: APIHub APIs - Static Server
+    description: Deliver static file contents from the current location
+    externalDocs:
+      description: Find out more
+      url: https://privatesky.xyz
+
+paths:
+
+  /directory-summary/*:
+    get:
+      tags:
+        - APIHub APIs - Static Server
+      operationId: getStaticDirectoryContents
+      summary: Return the file contents and directory structure from the appended path
+      responses:
+        "404":
+          description: Directory not found
+        "403":
+          description: Invalid directory
+        "200" :
+          description: Return the directory structure and file contents
