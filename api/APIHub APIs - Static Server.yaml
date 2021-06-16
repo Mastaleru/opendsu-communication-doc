@@ -33,3 +33,4 @@ paths:
           description: Invalid directory
         "200" :
           description: Return the directory structure and file contents
+      x-swagger-router-controller: StaticServer

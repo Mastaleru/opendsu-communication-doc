@@ -37,3 +37,4 @@ paths:
                     type: string
                   summary:
                     type: string
+      x-swagger-router-controller: InstallationInfo

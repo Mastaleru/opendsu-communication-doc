@@ -59,6 +59,7 @@ paths:
           description: Log message could not be found or is not of type string
         "500" :
           description: File I/O error
+      x-swagger-router-controller: Logging
 
   /log/get/{anchorID}:
     get:
@@ -82,7 +83,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/logMessage'
-
+      x-swagger-router-controller: Logging
 
 
 

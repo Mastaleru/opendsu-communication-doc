@@ -25,6 +25,7 @@ paths:
       tags:
         - APIHub APIs - Service Work Replacement
       summary: Serves the requested content, identified by the appended path, using DSU workers
+      operationId: getResource
       parameters:
         - name: keySSI
           in: path
@@ -40,10 +41,12 @@ paths:
           description: Invalid KeySSI
         "400":
           description: Worker resolver error
+      x-swagger-router-controller: ServiceWorkReplacement
     put:
       tags:
         - APIHub APIs - Service Work Replacement
       summary: Serves the requested content, identified by the appended path, using DSU workers
+      operationId: putResource
       parameters:
         - name: keySSI
           in: path
@@ -59,10 +62,12 @@ paths:
           description: Invalid KeySSI or invalid body
         "400":
           description: Worker resolver error
+      x-swagger-router-controller: ServiceWorkReplacement
     post:
       tags:
         - APIHub APIs - Service Work Replacement
       summary: Serves the requested content, identified by the appended path, using DSU workers
+      operationId: postResource
       parameters:
         - name: keySSI
           in: path
@@ -78,6 +83,7 @@ paths:
           description: Invalid KeySSI or invalid body
         "400":
           description: Worker resolver error
+      x-swagger-router-controller: ServiceWorkReplacement
 
 
   /code/iframe/{keySSI}/*:
@@ -85,6 +91,7 @@ paths:
       tags:
         - APIHub APIs - Service Work Replacement
       summary: Serves the requested content, identified by the appended path, using DSU workers
+      operationId: getCodeResource
       parameters:
         - name: keySSI
           in: path
@@ -100,11 +107,12 @@ paths:
           description: Invalid KeySSI
         "400":
           description: Worker resolver error
-
+      x-swagger-router-controller: ServiceWorkReplacement
     put:
       tags:
         - APIHub APIs - Service Work Replacement
       summary: Serves the requested content, identified by the appended path, using DSU workers
+      operationId: putCodeResource
       parameters:
         - name: keySSI
           in: path
@@ -120,10 +128,12 @@ paths:
           description: Invalid KeySSI or invalid body
         "400":
           description: Worker resolver error
+      x-swagger-router-controller: ServiceWorkReplacement
     post:
       tags:
         - APIHub APIs - Service Work Replacement
       summary: Serves the requested content, identified by the appended path, using DSU workers
+      operationId: postCodeResource
       parameters:
         - name: keySSI
           in: path
@@ -139,4 +149,4 @@ paths:
           description: Invalid KeySSI or invalid body
         "400":
           description: Worker resolver error
-
+      x-swagger-router-controller: ServiceWorkReplacement

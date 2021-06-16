@@ -49,6 +49,7 @@ paths:
                 properties:
                   path:
                     type: string
+      x-swagger-router-controller: UploadService
 
   /files/download/{filepath}:
     get:
@@ -73,4 +74,4 @@ paths:
               schema:
                 type: string
                 format: binary
-
+      x-swagger-router-controller: UploadService
