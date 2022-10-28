@@ -1,19 +1,34 @@
 'use strict';
 
-var path = require('path');
-var http = require('http');
+const path = require('path');
+const http = require('http');
 
-var oas3Tools = require('oas3-tools');
-var serverPort = 8080;
+const oas3Tools = require('oas3-tools');
+const serverPort = 8081;
 
 // swaggerRouter configuration
-var options = {
-    controllers: path.join(__dirname, './controllers')
+
+function validate(request, scopes, schema) {
+    // security stuff here
+    return true;
+}
+
+
+const options = {
+    controllers: path.join(__dirname, './controllers'),
+    openApiValidator: {
+
+        validateSecurity: {
+            handlers: {
+                basic_auth: validate,
+                api_key: validate
+            }
+        }
+    }
 };
 
-var expressAppConfig = oas3Tools.expressAppConfig(path.join(__dirname, 'api/openapi.yaml'), options);
-expressAppConfig.addValidator();
-var app = expressAppConfig.getApp();
+const expressAppConfig = oas3Tools.expressAppConfig(path.join(__dirname, 'api/openapi.yaml'), options);
+const app = expressAppConfig.getApp();
 
 // Initialize the Swagger middleware
 http.createServer(app).listen(serverPort, function () {
